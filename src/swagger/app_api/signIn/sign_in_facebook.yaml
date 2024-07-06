@@ -1,0 +1,40 @@
+paths:
+  /api/v1/sign-in/facebook:
+    post:
+      summary: Sign in with facebook
+      description: Sign in with facebook
+      tags:
+        - Authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInWithFacebookForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInWithGoogleResponse'
+        '404':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResponse'
+              example:
+                code: 404
+                message: Invalid facebook token
+                success: false
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResponse'
+              example:
+                code: 500
+                message: Internal Server Error
+                success: false

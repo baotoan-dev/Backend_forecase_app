@@ -1,0 +1,8 @@
+node_modules
+.vscode
+dist
+.env
+build
+src-built
+package-lock.json
+_images

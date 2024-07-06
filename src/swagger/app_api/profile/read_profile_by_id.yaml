@@ -1,0 +1,104 @@
+paths:
+    /api/v1/profiles:
+        get:
+            summary: Get profile by id
+            description: Get profile by id
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    id: "a9e5bc4d-823f-4acc-9356-f9e53c611eaf"
+                                    name: "Nguyen The Truong"
+                                    birthday: "2001-06-09T17:00:00.000Z"
+                                    address: { id: 225, name: "Hải Dương" }
+                                    gender: 1
+                                    introduction: "My intro"
+                                    phone: "0919004743"
+                                    email: "truong@gmail.com"
+                                    avatar: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/1a635477-97a2-4d53-80c5-c56be5729fe5-hou-china-6.jpg"
+                                    facebook: "facebook.com"
+                                    linkedin: "linkedin.com"
+                                    categories:
+                                        [
+                                            {
+                                                child_category_id: 25,
+                                                child_category: "Hiệu chỉnh",
+                                                parent_category_id: 1,
+                                                parent_category: "Công việc giấy tờ, sổ sách",
+                                            },
+                                        ]
+                                    locations:
+                                        [
+                                            {
+                                                district_id: 1451,
+                                                district: "Quận 9",
+                                                province_id: 202,
+                                                province: "Hồ Chí Minh",
+                                            },
+                                            {
+                                                district_id: 1655,
+                                                district: "Thành phố Bạc Liêu",
+                                                province_id: 200,
+                                                province: "Bạc Liêu",
+                                            },
+                                        ]
+                                    educations:
+                                        [
+                                            {
+                                                id: 5,
+                                                company_name: "TDT University - Vietnam",
+                                                major: "Computer Science",
+                                                start_date: "2019-09-09T17:00:00.000Z",
+                                                end_date: "2023-06-11T17:00:00.000Z",
+                                                extra_information: "Nothing to tell",
+                                            },
+                                        ]
+                                    experiences:
+                                        [
+                                            {
+                                                id: 3,
+                                                title: "Student",
+                                                company_name: "TDT University",
+                                                start_date: "2019-09-09T17:00:00.000Z",
+                                                end_date: "2023-06-11T17:00:00.000Z",
+                                                extra_information: "Nothing to tell",
+                                            },
+                                        ]
+
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "404":
+                    description: Not Found
+                    content:
+                        application/json:
+                            example:
+                                code: 404
+                                success: false
+                                message: Not Found
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

@@ -1,0 +1,40 @@
+components:
+  schemas:
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        application_id:
+          type: integer
+          format: int64
+        is_read:
+          type: integer
+          format: int64
+        type:
+          type: integer
+          format: int64
+        created_at:
+          type: integer
+          format: int64
+        application_status:
+          type: integer
+          format: int64
+        name:
+          type: string
+        post_title:
+          type: string
+        company_name:
+          type: string
+        post_id:
+          type: integer
+          format: int64
+        type_text:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        is_read_value:
+          type: boolean

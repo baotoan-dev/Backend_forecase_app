@@ -1,0 +1,66 @@
+components:
+  schemas:
+    NotificationKeywordDto:
+      type: object
+      properties:
+        keyword:
+          type: string
+          example: 'keyword'
+        category_id:
+          type: integer
+          example: 8
+          description: Parent category id
+        category_status:
+          type: integer
+          example: 1
+        district_id:
+          type: string
+          example: "001"
+        district_status:
+          type: integer
+          example: 1
+    NotificationKeywordEntity:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20
+        account_id:
+          type: string
+          example: "2767b97b-ba40-4ddc-b7b5-750c8f152777"
+        keyword:
+          type: string
+          example: 'keyword'
+        district_id:
+          type: string
+          example: "001"
+        district_status:
+          type: integer
+          example: 1
+        category_id:
+          type: integer
+          example: 9
+        category_status:
+          type: integer
+          example: 1
+        status:
+          type: integer
+          example: 1
+        created_at:
+          type: string
+          example: "2023-05-25T10:14:29.000Z"
+        updated_at:
+          type: string
+          example: "2023-05-25T10:14:29.000Z"
+        deleted_at:
+          type: string
+          example: "2023-05-25T10:14:29.000Z"
+    NotificationKeywordUpdateDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 4
+        status:
+          type: integer
+          example: 1

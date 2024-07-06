@@ -1,0 +1,54 @@
+components:
+    schemas:
+        VerifyOTPPhoneForm:
+            type: object
+            description: Example valid phone number +84835743377, 84835743377, 0835743377, 840835743377
+            properties:
+                phoneNumber:
+                    type: string
+                    format: phone
+                otp:
+                    type: string
+                    format: otp
+            required:
+                - phone
+                - otp
+
+        VerifyEmailForm:
+            type: object
+            description: Example valid email
+            properties:
+                email:
+                    type: string
+                    format: email
+                otp:
+                    type: string
+                    format: otp
+            required:
+                - email
+                - otp
+
+        VerifyEmailResponse:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    example: 200
+                success:
+                    type: boolean
+                    example: true
+                data:
+                    type: object
+                    properties:
+                        accountId:
+                            type: string
+                            example: c89aca89-3b7f-4c9c-b78a-7de3f1411da5
+                        accessToken:
+                            type: string
+                            example: eyJhbGciOi
+                        refreshToken:
+                            type: string
+                            example: eyJhbGciOi
+                message:
+                    type: string
+                    example: Verify email successfully

@@ -1,0 +1,189 @@
+components:
+    multipart/form-data:
+    schemas:
+        Post:
+            type: object
+            properties:
+                id:
+                    type: string
+                account_id:
+                    type: integer
+                title:
+                    type: string
+                company_name:
+                    type: string
+                is_date_period:
+                    type: integer
+                start_date:
+                    type: integer
+                end_date:
+                    type: integer
+                start_time:
+                    type: integer
+                end_time:
+                    type: integer
+                is_working_weekend:
+                    type: integer
+                salary_min:
+                    type: integer
+                salary_max:
+                    type: integer
+                salary_type:
+                    type: integer
+                    description: salary type id
+                description:
+                    type: string
+                created_at:
+                    type: integer
+                updated_at:
+                    type: integer
+                address:
+                    type: object
+                    properties:
+                        province_id:
+                            type: integer
+                        province:
+                            type: string
+                category:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            id:
+                                type: integer
+                            name:
+                                type: string
+                images:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            id:
+                                type: integer
+                                description: ID Post
+                            images:
+                                type: string
+                            status:
+                                type: integer
+                                description: 0 - disabled, 1 - enabled
+
+        UpdatePostInformationBodyData:
+            type: object
+            properties:
+                id:
+                    type: number
+                title:
+                    type: string
+                    example: "Tuyển nhân viên"
+                companyName:
+                    type: string
+                    example: "Công ty TNHH ABC"
+                wardId:
+                    type: string
+                    example: "00001"
+                address:
+                    type: string
+                    example: "79 Quoc Huong"
+                latitude:
+                    type: number
+                    example: 21.012345
+                longitude:
+                    type: number
+                    example: 105.012345
+                isDatePeriod:
+                    type: number
+                    example: 0
+                    description: 0 - no, 1 - yes
+                startDate:
+                    type: number
+                    example: 1611234567
+                endDate:
+                    type: number
+                    example: 1611234567
+                startTime:
+                    type: number
+                    example: 57600000
+                endTime:
+                    type: number
+                    example: 57603000
+                isWorkingWeekend:
+                    type: number
+                    description: 0 - no, 1 - yes
+                isRemotely:
+                    type: number
+                    description: 0 - no, 1 - yes
+                salaryMin:
+                    type: number
+                    example: 100000
+                salaryMax:
+                    type: number
+                    example: 200000
+                salaryType:
+                    type: number
+                    description: salary type id
+                    example: 2
+                moneyType:
+                    type: number
+                    description: 1 - VND, 2 - USD
+                    enum:
+                        - 1
+                        - 2
+                    example: 1
+                jobTypeId:
+                    type: number
+                    description: job type id
+                    example: 1
+                description:
+                    type: string
+                    example: "Mô tả công việc"
+                phoneNumber:
+                    type: string
+                    example: "0123456789"
+                categoryIds:
+                    type: array
+                    items:
+                        type: number
+                    example: [170]
+                deletedImages:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            id:
+                                type: number
+                            # image:
+                            #     type: string
+                            #     description: image url
+                    description: if no item, pass empty array ([])
+                images:
+                    type: array
+                    items:
+                        type: string
+                        description: Size < 2MB
+                        format: binary
+            required:
+                - id
+                - title
+                - companyName
+                - isDatePeriod
+                - isWorkingWeekend
+                - startTime
+                - endTime
+                - salaryMin
+                - salaryMax
+                - salaryType
+                - description
+                - categoryIds
+                - moneyType
+
+        updatePostStatus:
+            type: object
+            properties:
+                id:
+                    type: number
+                status:
+                    type: number
+                    description: 1 - accept, 2 - reject, 3 - close
+            required:
+                - id
+                - status

@@ -1,0 +1,41 @@
+components:
+  schemas:
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Application id
+        user_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        avatar:
+          type: string
+        gender:
+          type: integer
+        birthday:
+          type: integer
+          format: timestamp
+        created_at:
+          type: integer
+          format: timestamp
+        bookmarked:
+          type: integer
+        seen:
+          type: integer
+        status:
+          type: integer
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+          format: int32
+      required:
+        - message
+        - code

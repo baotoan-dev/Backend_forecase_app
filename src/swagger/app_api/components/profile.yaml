@@ -1,0 +1,184 @@
+components:
+    schemas:
+        # UPDATE PERSONAL INFORMATION
+        UpdatePersonalInformationOfProfileBodyForm:
+            type: object
+            description: Update personal information of profile
+            properties:
+                name:
+                    type: string
+                phone:
+                    type: string
+            required:
+                - name
+                - phone
+
+        # UPDATE CONTACT INFORMATION
+        UpdateContactInformationOfProfileBodyForm:
+            type: object
+            description: Update contact information of profile
+            properties:
+                phone:
+                    type: string
+                email:
+                    type: string
+                facebook:
+                    type: string
+                linkedin:
+                    type: string
+            required:
+                - phone
+                - email
+
+        # UPDATE CATEGORIES
+        UpdateCategoriesOfProfileBodyForm:
+            type: object
+            description: Update categories of profile
+            properties:
+                categoryIds:
+                    type: array
+                    items:
+                        type: number
+                        description: Child category id
+
+        # UPDATE LOCATIONS
+        UpdateLocationsOfProfileBodyForm:
+            type: object
+            description: Update locations of profile
+            properties:
+                locationIds:
+                    type: array
+                    items:
+                        type: number
+                        description: District id
+            required:
+                - locationIds
+
+        # CREATE EDUCATION
+        CreateEducationOfProfileBodyForm:
+            type: object
+            description: Create education for profile
+            properties:
+                companyName:
+                    type: string
+                major:
+                    type: string
+                startDate:
+                    type: number
+                    format: timestamp
+                endDate:
+                    type: number
+                    format: timestamp
+                extraInformation:
+                    type: string
+                    description: Optional
+                academicTypeId:
+                    type: number
+            required:
+                - companyName
+                - major
+                - startDate
+                - endDate
+                - academicTypeId
+
+        # UPDATE EDUCATION
+        UpdateEducationOfProfileBodyForm:
+            type: object
+            description: Update education for profile
+            properties:
+                educationId:
+                    type: number
+                    description: Education ID
+                companyName:
+                    type: string
+                major:
+                    type: string
+                startDate:
+                    type: number
+                    format: timestamp
+                endDate:
+                    type: number
+                    format: timestamp
+                extraInformation:
+                    type: string
+                    description: Optional
+            required:
+                - educationId
+                - companyName
+                - major
+                - startDate
+                - endDate
+
+        # DELETE EDUCATION
+        DeleteEducationOfProfileBodyForm:
+            type: object
+            description: Delete education for profile
+            properties:
+                educationId:
+                    type: number
+                    description: Education ID
+            required:
+                - educationId
+
+        # CREATE EXPERIENCE
+        CreateExperienceOfProfileBodyForm:
+            type: object
+            description: Create experience for profile
+            properties:
+                title:
+                    type: string
+                companyName:
+                    type: string
+                startDate:
+                    type: number
+                    format: timestamp
+                endDate:
+                    type: number
+                    format: timestamp
+                extraInformation:
+                    type: string
+                    description: Optional
+            required:
+                - title
+                - companyName
+                - startDate
+                - endDate
+
+        # UPDATE EDUCATION
+        UpdateExperienceOfProfileBodyForm:
+            type: object
+            description: Update experience of profile
+            properties:
+                experienceId:
+                    type: number
+                    description: Experience ID
+                title:
+                    type: string
+                companyName:
+                    type: string
+                startDate:
+                    type: number
+                    format: timestamp
+                endDate:
+                    type: number
+                    format: timestamp
+                extraInformation:
+                    type: string
+                    description: Optional
+            required:
+                - experienceId
+                - title
+                - companyName
+                - startDate
+                - endDate
+
+        # DELETE EDUCATION
+        DeleteExperienceOfProfileBodyForm:
+            type: object
+            description: Delete experience of profile
+            properties:
+                experienceId:
+                    type: number
+                    description: Experience ID
+            required:
+                - experienceId

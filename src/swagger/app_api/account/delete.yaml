@@ -1,0 +1,58 @@
+paths:
+  /api/v1/accounts/delete/{id}:
+    delete:
+      summary: Delete account
+      description: Delete account
+      tags:
+        - Account
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: Account id
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              example:
+                code: 201
+                success: true
+                message: Account deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                code: 400
+                success: false
+                message: Post is not available
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              example:
+                code: 401
+                success: false
+                message: Unauthorized
+        '404':
+          description: Not found
+          content:
+            application/json:
+              example:
+                code: 404
+                success: false
+                message: Post not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                code: 500
+                success: false
+                message: Internal server error
+              
