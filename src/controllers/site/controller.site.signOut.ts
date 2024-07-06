@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 
 import logging from "../../utils/logging";
 import { verifyRefreshTokenService } from "../../services/jwt/_service.jwt";
-import redisClient from "../../configs/redis";
+import redisClient, { deleteSocket } from "../../configs/redis";
 
 interface Payload {
     id: string;
@@ -50,8 +50,21 @@ const signOutController = async (
             arrayRefreshToken.splice(index, 1);
 
             redisClient.set(id, arrayRefreshToken.join(","));
-        
+            
+            // REMOVE SOCKET BY ID IN REDIS SERVER
+            // global.__io.sockets.sockets[id].disconnect(true);
+            
+            // for (const [key, value] of global.__io.sockets.sockets.entries()) {
+            //     // deleteSocket(id, id);
+            // }
         }
+        // console.log("global.__io.sockets.sockets[id]", global.__io.sockets.sockets.entries());
+        // for (const [key, value] of global.__io.sockets.sockets.entries()) {
+        //     // deleteSocket(id, id);
+        //     console.log("key", key);
+        //     console.log("value", value);
+        // }
+
 
         return;
 

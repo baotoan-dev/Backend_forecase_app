@@ -15,8 +15,13 @@ paths:
                         schema:
                             $ref: "#/components/schemas/UpdatePersonalInformationOfProfileBodyForm"
                         example:
-                            name: "John Doe"
-                            phone: "0123456789"
+                            name: "Nguyen The Truong"
+                            birthday: 995130000000
+                            gender: 1
+                            address: 201
+                            introduction: "My intro"
+                            jobTypeId: 1
+                            jobTypeName: "Developer"
             responses:
                 "200":
                     description: OK

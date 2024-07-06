@@ -7,11 +7,29 @@ components:
             properties:
                 name:
                     type: string
-                phone:
+                birthday:
+                    type: number
+                    format: timestamp number
+                gender:
+                    type: number
+                    description: 0 - female, 1 - male
+                address:
+                    type: number
+                    description: province id
+                introduction:
                     type: string
+                jobTypeId:
+                    type: number
+                    description: Job type id
+                jobTypeName:
+                    type: string
+                    description: Job type name
             required:
                 - name
-                - phone
+                - birthday
+                - gender
+                - address
+                - introduction
 
         # UPDATE CONTACT INFORMATION
         UpdateContactInformationOfProfileBodyForm:

@@ -1,0 +1,50 @@
+# paths:
+#   /api/v1/sign-in/phone:
+#     post:
+#       summary: Sign in with phone number
+#       description: Sign in with phone number
+#       tags:
+#         - Authentication
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/SignInWithPhoneForm'
+#         required: true
+#       responses:
+#         '200':
+#           description: OK
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/SignInResponse'
+#         '404':
+#           description: Bad Request
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/SignInResponse'
+#               example:
+#                 code: 404
+#                 message: Invalid phone number
+#                 success: false
+#         '409':
+#           description: Otp still expire
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/SignInResponse'
+#               example:
+#                 code: 409
+#                 message: Otp still expire
+#                 success: false
+#         '500':
+#           description: Internal Server Error
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/SignInResponse'
+#               example:
+#                 code: 500
+#                 message: Internal Server Error
+#                 success: false

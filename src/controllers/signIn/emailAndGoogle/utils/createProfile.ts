@@ -5,14 +5,16 @@ const createProfile = async (
     {
         accountId,
         email,
-        phone,
         name,
+        address,
+        birthday
     }: 
     {
         accountId: string,
         email: string,
-        phone: string,
-        name: string,
+        name?: string,
+        address?: string,
+        birthday?: number
     }
 ) => {
     // start create profile
@@ -26,8 +28,11 @@ const createProfile = async (
         // create new profile
         const isCreateProfileSuccess = await createProfileWithAccountIdService(
             accountId,
+            email,
             "",
             name,
+            address,
+            birthday
         );
 
         if (!isCreateProfileSuccess) {

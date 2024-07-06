@@ -1,0 +1,41 @@
+paths:
+    /api/v1/banners/ena?v=2:
+        get:
+            summary: Read enabled banners on web
+            description: Read enabled banners on web
+            tags:
+                - Banner
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            id: 1,
+                                            image: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/3b50ad1b-eb4c-4453-addc-c778666e25c4-1a635477-97a2-4d53-80c5-c56be5729fe5-hou-china-6.jpg",
+                                            redirect_url: "sfsf2rfs1.jada.zczc.com",
+                                            type: 2,
+                                        },
+                                    ]
+                                message: "Successfully"
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

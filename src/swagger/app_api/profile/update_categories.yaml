@@ -1,0 +1,54 @@
+paths:
+    /api/v1/profiles/cat:
+        put:
+            summary: Update categories of user profile
+            description: Update categories of user profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateCategoriesOfProfileBodyForm"
+                        example:
+                            categoryIds: [25, 12, 9]
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

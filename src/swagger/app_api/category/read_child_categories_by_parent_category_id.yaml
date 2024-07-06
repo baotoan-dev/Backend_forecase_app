@@ -1,0 +1,28 @@
+paths:
+    /api/v1/categories/c?pid=:
+        get:
+            summary: Get child categories by parent category
+            description: Get child categories by parent category
+            tags:
+                - Category
+            parameters:
+                - in: query
+                  name: pid
+                  schema:
+                      type: number
+                  description: parent category id
+                  required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        { id: 19, name: "Đánh máy" },
+                                        { id: 20, name: "Chỉnh sửa tài liệu" },
+                                    ]
+                                message: Successfully

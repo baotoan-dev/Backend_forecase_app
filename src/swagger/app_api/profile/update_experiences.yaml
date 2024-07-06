@@ -1,0 +1,174 @@
+paths:
+    # CREATE
+    /api/v1/profiles/exp/c:
+        put:
+            summary: Create new experience for profile
+            description: Create new experience for profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateExperienceOfProfileBodyForm"
+                        example:
+                            title: "Student"
+                            companyName: "TDT University"
+                            startDate: 1568073600000
+                            endDate: 1686528000000
+                            extraInformation: "Nothing to tell"
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error
+
+    # UPDATE
+    /api/v1/profiles/exp/u:
+        put:
+            summary: Update experience of profile
+            description: Update experience of profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateExperienceOfProfileBodyForm"
+                        example:
+                            experienceId: 2
+                            title: "Project Manager"
+                            companyName: "TDT University - Vietnam"
+                            startDate: 1570838400000
+                            endDate: 1686787200000
+                            extraInformation: "Nothing"
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error
+
+    # DELETE
+    /api/v1/profiles/exp/d:
+        put:
+            summary: Delete experience of profile
+            description: Delete experience of profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/DeleteExperienceOfProfileBodyForm"
+                        example:
+                            experienceId: 1
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

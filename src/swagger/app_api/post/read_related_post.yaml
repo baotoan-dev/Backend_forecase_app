@@ -1,0 +1,56 @@
+paths:
+    /api/v1/posts/related/{postId}:
+        get:
+            tags:
+                - Post
+            summary: Get related posts
+            description: Get related posts
+            operationId: getRelatedPosts
+            parameters:
+                - name: postId
+                  in: path
+                  required: true
+                  description: Post id
+                  schema:
+                      type: integer
+                      example: 1000
+            responses:
+                200:
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    posts:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/Post'
+                                    total:
+                                        type: number
+                                        example: 1
+                400:
+                    description: Bad request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                401:
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                404:
+                    description: Not found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                500:
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+            

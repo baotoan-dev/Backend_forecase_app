@@ -1,0 +1,54 @@
+# paths:
+#   /api/v1/sign-in/phone/resend:
+#     post:
+#       summary: Resend phone otp
+#       description: Resend phone otp
+#       tags:
+#         - Authentication
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/SignInWithPhoneForm"
+#         required: true
+#       responses:
+#         "200":
+#           description: OK
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: "#/components/schemas/SignInResponse"
+#               example:
+#                 code: 200
+#                 success: true
+#                 message: Resend phone successfully
+#         "400":
+#           description: Bad Request
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: "#/components/schemas/SignInResponse"
+#               example:
+#                 code: 400
+#                 success: false
+#                 message: Phone number is invalid
+#         "404":
+#           description: Not Found
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: "#/components/schemas/SignInResponse"
+#               example:
+#                 code: 404
+#                 success: false
+#                 message: Phone number is not existed
+#         "500":
+#           description: Internal Server Error
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: "#/components/schemas/SignInResponse"
+#               example:
+#                 code: 500
+#                 success: false
+#                 message: Internal Server Error

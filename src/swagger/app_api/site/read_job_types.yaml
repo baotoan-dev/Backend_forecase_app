@@ -1,0 +1,33 @@
+paths:
+    /api/v1/job-types:
+        get:
+            summary: Read all job types
+            tags:
+                - Site
+            parameters:
+                - in: query
+                  name: lang
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        { job_type_id: 1, job_type_name: "Fulltime" },
+                                        { job_type_id: 2, job_type_name: "Parttime" },
+                                    ]
+                                message: Successfully
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

@@ -1,0 +1,24 @@
+paths:
+    /api/v1/categories/p:
+        get:
+            summary: Get all parent categories
+            description: Get all parent categories
+            tags:
+                - Category
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            id: 1,
+                                            name: "Công việc giấy tờ, sổ sách",
+                                        },
+                                        { id: 2, name: "Giáo viên/Khóa học" },
+                                    ]
+                                message: Successfully

@@ -1,0 +1,32 @@
+paths:
+  /api/v1/search/suggest:
+    get:
+      summary: Search suggest
+      description: Search suggest
+      operationId: searchSuggest
+      tags:
+        - Search
+      parameters:
+        - name: limit
+          in: query
+          description: Limit
+          required: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          type: string
+                        count:
+                          type: integer

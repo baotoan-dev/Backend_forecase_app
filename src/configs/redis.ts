@@ -28,4 +28,17 @@ client.on('disconnect', () => logging.warning('Redis disconnected'));
 
 // client.del = util.promisify(client.del).bind(client);
 
+export function deleteSocket(socketId: string, accountId: string) {
+  client.del(`socket_id-${socketId}`);
+
+  client.get(`socket-${accountId}`).then((reply) => {
+    if (!reply) return;
+    let arraySocketId = reply.split(',');
+    let index = arraySocketId.indexOf(socketId);
+    arraySocketId.splice(index, 1);
+    if (arraySocketId.length === 0) return client.del(`socket-${accountId}`);
+    client.set(`socket-${accountId}`, arraySocketId.join(','));
+  })
+}
+
 export default client;

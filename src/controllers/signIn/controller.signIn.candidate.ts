@@ -5,6 +5,7 @@ import signRefreshTokenService from "../../services/jwt/service.jwt.signRefreshT
 import logging from "../../utils/logging";
 import * as accountServices from "../../services/account/_service.account";
 import * as brypt from 'bcrypt'
+import redisClient from "../../configs/redis";
 
 const candidateSignInController = async (
     req: Request,
@@ -28,12 +29,27 @@ const candidateSignInController = async (
             email,
         );
 
+        const idRedis = await redisClient.get(`disable:${accountData.id}`);
+
+        console.log(idRedis);
+
+        if (idRedis === accountData.id) {
+            console.log('verify disable account');
+            return next(createError(401, "This account has been disabled"))
+        }
+
+        if (accountData.status === 0) {
+            return next(createError(401));
+        }
+
+        // console.log(accountData);
+
         if (!accountData) {
             return next(createError(404));
         }
 
         if (accountData.role !== 0 && accountData.role !== 1) {
-            logging.error("Not user account");
+            logging.error("Not candidate account");
             return next(createError(401));
         }
 

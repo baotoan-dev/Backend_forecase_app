@@ -1,0 +1,58 @@
+paths:
+    /api/v1/profiles/cv:
+        post:
+            summary: Create new CV of profile
+            description: Create new CV of profile, when profile has not CV
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                required: true
+                description:
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                pdf:
+                                    type: string
+                                    format: binary
+                            required:
+                                - pdf
+            responses:
+                "201":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "404":
+                    description: Not Found
+                    content:
+                        application/json:
+                            example:
+                                code: 404
+                                success: false
+                                message: Not Found
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

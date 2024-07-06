@@ -1,0 +1,48 @@
+paths:
+    /api/v1/themes/enabled:
+        get:
+            summary: Read enabled theme
+            description: Read enabled theme
+            tags:
+                - Theme
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            id: 1,
+                                            title: "Quận 1",
+                                            image: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/2f0fe6db-546b-4388-b4fa-1b63e69e56bc-live-from-space.jpg",
+                                            number_of_posts: 3,
+                                        },
+                                        {
+                                            id: 2,
+                                            title: "Quận 2",
+                                            image: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/2f0fe6db-546b-4388-b4fa-1b63e69e56bc-live-from-space.jpg",
+                                            number_of_posts: 0,
+                                        },
+                                    ]
+                                message: "Successfully"
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

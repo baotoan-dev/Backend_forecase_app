@@ -1,0 +1,31 @@
+paths:
+  /api/v1/search/history:
+    delete:
+      summary: Delete search history
+      description: Delete search history
+      operationId: searchDeleteHistory
+      security:
+        - bearerAuth: []
+      tags:
+        - Search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyword:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string

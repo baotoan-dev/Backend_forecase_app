@@ -1,0 +1,49 @@
+paths:
+    /api/v1/categories:
+        get:
+            summary: Get all categories
+            description: Get all categories (include parent and child)
+            tags:
+                - Category
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            parent_category_id: 1,
+                                            parent_category: "Công việc giấy tờ, sổ sách",
+                                            childs:
+                                                [
+                                                    {
+                                                        "id": 19,
+                                                        "name": "Đánh máy",
+                                                    },
+                                                    {
+                                                        "id": 20,
+                                                        "name": "Chỉnh sửa tài liệu",
+                                                    },
+                                                ],
+                                        },
+                                        {
+                                            parent_category_id: 2,
+                                            parent_category: "Giáo viên/Khóa học",
+                                            childs:
+                                                [
+                                                    {
+                                                        "id": 1,
+                                                        "name": "Giáo viên toán",
+                                                    },
+                                                    {
+                                                        "id": 2,
+                                                        "name": "Giáo viên văn học",
+                                                    },
+                                                ],
+                                        },
+                                    ]
+                                message: Successfully

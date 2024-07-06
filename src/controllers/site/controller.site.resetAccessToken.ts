@@ -1,6 +1,6 @@
 import createError from "http-errors";
 import { Request, Response, NextFunction } from "express";
-
+import redisClient from "../../configs/redis";
 import logging from "../../utils/logging";
 import * as jwtServices from "../../services/jwt/_service.jwt";
 
@@ -45,6 +45,12 @@ const resetAccessTokenController = async (
             id: payload.id,
             role: payload.role,
         };
+
+        const idRedis = await redisClient.get(`disable:${newPayload.id}`);
+        
+        if (idRedis === newPayload.id) {
+            return next(createError(401, "This account has been disabled"));
+        }
 
         // SIGN NEW ACCESS TOKEN
         const newAccessToken = await jwtServices.signAccessTokenService(

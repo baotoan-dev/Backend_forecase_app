@@ -1,0 +1,53 @@
+paths:
+    /api/v1/bookmarks:
+        post:
+            summary: Create bookmark
+            description: Create bookmark
+            tags:
+                - Bookmark
+            security:
+                - bearerAuth: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                postId:
+                                    type: number
+                                    example: 21
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: "Successfully"
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            example:
+                                code: 401
+                                success: false
+                                message: Unauthorized
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

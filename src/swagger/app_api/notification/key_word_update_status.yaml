@@ -1,0 +1,48 @@
+paths:
+  /api/v1/notification/keyword/update-status:
+    put:
+      tags:
+        - Notification/Keyword
+      summary: Update a keyword for notification
+      description: Update a keyword for notification
+      operationId: keyword_update_status
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Notification keyword object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationKeywordUpdateDto'
+      responses:
+        '200':
+          description: Notification keyword object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationKeywordEntity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

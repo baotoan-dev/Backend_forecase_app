@@ -1,0 +1,176 @@
+paths:
+    # CREATE
+    /api/v1/profiles/edu/c:
+        put:
+            summary: Create new education for profile
+            description: Create new education for profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateEducationOfProfileBodyForm"
+                        example:
+                            companyName: "TDT University"
+                            major: "Computer Science"
+                            startDate: 1568073600000
+                            endDate: 1686528000000
+                            extraInformation: "Nothing to tell"
+                            academicTypeId: 8
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error
+
+    # UPDATE
+    /api/v1/profiles/edu/u:
+        put:
+            summary: Update education for profile
+            description: Update education for profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateEducationOfProfileBodyForm"
+                        example:
+                            educationId: 5
+                            companyName: "TDT University"
+                            major: "Computer Science"
+                            startDate: 1568332800000
+                            endDate: 1686441600000
+                            extraInformation: "Nothing to tell"
+                            academicTypeId: 8
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error
+
+    # DELETE
+    /api/v1/profiles/edu/d:
+        put:
+            summary: Delete education of profile
+            description: Delete education of profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            requestBody:
+                description:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/DeleteEducationOfProfileBodyForm"
+                        example:
+                            educationId: 5
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            example:
+                                code: 409
+                                success: false
+                                message: Conflict
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

@@ -7,6 +7,7 @@ import createAccountWithEmail from "./utils/createAccountWithEmail";
 import createProfile from "./utils/createProfile";
 import readAccountByEmailService from "../../../services/account/service.account.readByEmail";
 import updateActiveForAccountService from "../../../services/account/service.account.updateActiveForAccount";
+import redisClient from "../../../configs/redis";
 
 const handlerSignInSuccessful = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -19,6 +20,12 @@ const handlerSignInSuccessful = async (req: Request, res: Response, next: NextFu
         const emailRemovedDots = req.body.emailRemovedDots;
         
         const checkAccountData = await readAccountByEmailService(email)
+
+        const idRedis = await redisClient.get(`disable:${checkAccountData.id}`);
+
+        if (idRedis === checkAccountData.id) {
+            return next(createHttpError(401, "This account has been disabled"))
+        }
 
         if (checkAccountData) {
             await updateActiveForAccountService(checkAccountData.id)
@@ -66,8 +73,9 @@ const handlerSignInSuccessful = async (req: Request, res: Response, next: NextFu
             {
                 accountId: accountData.accountId,
                 email: email,
-                phone: "",
                 name: req.body.name ? req.body.name : "",
+                address: '04',
+                birthday: 86400000
             }
         )
 

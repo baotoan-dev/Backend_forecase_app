@@ -1,0 +1,68 @@
+paths:
+  /api/v1/history/recruiter/{post_id}/applications:
+    get:
+      summary: Get all applications of a job
+      description: >
+        Get all applications of a job
+        history/recruiter/application list
+      tags:
+        - History/Recruiter
+      operationId: get_applications_by_post_id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: post_id
+          in: path
+          description: Id of the job
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: limit
+          in: query
+          description: Limit of applications
+          required: false
+          schema:
+            type: integer
+            format: int32
+
+      responses:  
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobApplications'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error  

@@ -1,0 +1,46 @@
+paths:
+    /api/v1/welcome-images:
+        get:
+            summary: Read all welcome images
+            description: Read all welcome images
+            tags:
+                - Site
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            id: 1,
+                                            url: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/2f0fe6db-546b-4388-b4fa-1b63e69e56bc-live-from-space.jpg",
+                                            status: 1,
+                                        },
+                                        {
+                                            id: 2,
+                                            url: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/2f0fe6db-546b-4388-b4fa-1b63e69e56bc-live-from-space.jpg",
+                                            status: 1,
+                                        },
+                                    ]
+                                message: "Successfully"
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

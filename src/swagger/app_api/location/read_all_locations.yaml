@@ -1,0 +1,43 @@
+paths:
+  /api/v1/locations:
+    get:
+      summary: Get all locations
+      description: Get all locations (include province and district)
+      tags:
+        - Location
+      parameters:
+        - in: query
+          name: lang
+          schema:
+            type: string
+          description: language code vi | en |ko
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                code: 200
+                success: true
+                data:
+                  [
+                    {
+                      province_id: 201,
+                      province: "Hà Nội",
+                      districts:
+                        [
+                          { "id": 1482, "name": "Quận Bắc Từ Liêm" },
+                          { "id": 1484, "name": "Quận Ba Đình" },
+                        ],
+                    },
+                    {
+                      province_id: 202,
+                      province: "Hồ Chí Minh",
+                      districts:
+                        [
+                          { "id": 1442, "name": "Quận 1" },
+                          { "id": 1443, "name": "Quận 2" },
+                        ],
+                    },
+                  ]
+                message: Successfully

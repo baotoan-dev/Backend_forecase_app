@@ -1,0 +1,38 @@
+paths:
+  /api/v1/search/history:
+    get:
+      summary: Search history
+      description: Search history
+      operationId: searchHistory
+      security:
+        - bearerAuth: []
+      tags:
+        - Search
+      parameters:
+        - name: page
+          in: query
+          description: Page
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Limit
+          required: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          type: string

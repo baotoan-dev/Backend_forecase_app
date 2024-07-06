@@ -1,0 +1,1 @@
+export { default as countCompanyOfMonthService } from "./service.countCompanyOfMonth";

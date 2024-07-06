@@ -1,0 +1,32 @@
+paths:
+  /api/v1/locations/w:
+    get:
+      summary: Get wards by district
+      description: Get wards by district
+      tags:
+        - Location
+      parameters:
+        - in: query
+          name: did
+          schema:
+            type: string
+          description: ward id
+          required: true
+        - in: query
+          name: lang
+          schema:
+            type: string
+          description: language code vi | en | ko
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                code: 200
+                success: true
+                data:
+                  [
+                    
+                  ]
+                message: Successfully

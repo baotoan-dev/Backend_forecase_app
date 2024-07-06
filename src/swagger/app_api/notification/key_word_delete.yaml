@@ -1,0 +1,54 @@
+paths:
+  /api/v1/notification/keyword/delete:
+    delete:
+      tags:
+        - Notification/Keyword
+      summary: Delete a keyword for notification
+      description: Delete a keyword for notification
+      operationId: keyword_delete_status
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Notification keyword object
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keywordNotificationIds:
+                  type: array
+                  items:
+                    type: integer
+                  example: [1, 2, 3]
+      responses:
+        '200':
+          description: Notification keyword object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationKeywordEntity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

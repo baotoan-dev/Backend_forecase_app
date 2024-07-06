@@ -1,0 +1,92 @@
+paths:
+  /api/v1/search/filter:
+    get:
+      summary: Search by filter
+      description: Search by filter
+      operationId: searchByFilter
+      tags:
+        - Search
+      parameters:
+        - name: page
+          in: query
+          description: Page
+          required: false
+          schema:
+            type: integer
+        - name: district_ids
+          in: query
+          description: Array of district ids
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          example: 1142,1143,1144
+        - name: category_ids
+          in: query
+          description: Array of category ids
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          example: 1,2,3
+        - name: salary_min
+          in: query
+          description: Salary min
+          required: false
+          schema:
+            type: integer
+        - name: salary_max
+          in: query
+          description: Salary max
+          required: false
+          schema:
+            type: integer
+        - name: salary_type
+          in: query
+          description: Salary type
+          required: false
+          schema:
+            type: string
+            example: 1,2
+          example: 1 - Day, 2 - Week, 3 - Month, 4 - Year, 5 - Job
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable

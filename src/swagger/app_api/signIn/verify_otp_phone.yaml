@@ -1,0 +1,50 @@
+# paths:
+#   /api/v1/sign-in/phone/verify:
+#     post:
+#       summary: Verify OTP code for sign in with phone number
+#       description: Verify OTP code
+#       tags:
+#         - Authentication
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/VerifyOTPPhoneForm'
+#         required: true
+#       responses:
+#         '200':
+#           description: OK
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/VerifyOTPResponse'
+#         '404':
+#           description: Bad Request
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/VerifyOTPResponse'
+#               example:
+#                 code: 404
+#                 message: Invalid phone number
+#                 success: false
+#         '409':
+#           description: Conflict
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/VerifyOTPResponse'
+#               example:
+#                 code: 409
+#                 message: Invalid otp
+#                 success: false
+#         '500':
+#           description: Internal Server Error
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/VerifyOTPResponse'
+#               example:
+#                 code: 500
+#                 message: Internal Server Error
+#                 success: false

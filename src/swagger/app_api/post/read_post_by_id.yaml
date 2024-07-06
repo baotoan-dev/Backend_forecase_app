@@ -1,0 +1,90 @@
+paths:
+    /api/v1/posts/{id}:
+        get:
+            summary: Read post by id
+            description: Read post by id
+            tags:
+                - Post
+            parameters:
+                - name: id
+                  in: path
+                  description: Post ID
+                  schema:
+                      type: number
+                  required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    id: 15
+                                    account_id: "4d207f7c-d443-476b-af9a-b59da47560a9"
+                                    title: "Title"
+                                    company_name: "AIWorks"
+                                    is_date_period: 1
+                                    start_date: 1668043800000
+                                    end_date: 1668907800000
+                                    start_time: 1668043800000
+                                    end_time: 1668043800000
+                                    is_working_weekend: 1
+                                    salary: 5000
+                                    salary_type_id: 1
+                                    salary_type: "Giờ"
+                                    description: "Description"
+                                    status: 0
+                                    created_at: 1669772817000
+                                    province_id: 202
+                                    province: "Hồ Chí Minh"
+                                    district_id: 1448
+                                    district: "Quận 6"
+                                    categories:
+                                        [
+                                            {
+                                                "child_category_id": 50,
+                                                "child_category": "Tiếng Trung",
+                                                "parent_category_id": 3,
+                                                "parent_category": "Dịch thuật",
+                                            },
+                                            {
+                                                "child_category_id": 62,
+                                                "child_category": "Tiếng Ý",
+                                                "parent_category_id": 3,
+                                                "parent_category": "Dịch thuật",
+                                            },
+                                        ]
+                                    images:
+                                        [
+                                            {
+                                                "id": 7,
+                                                "image": "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/896aff4a-8c90-4891-8bce-43be9ec5606b-7edfc0ed-1899-44ee-85ec-a05fb3d07260-kali-logo-16x9-1.png",
+                                                "status": 1,
+                                            },
+                                            {
+                                                "id": 8,
+                                                "image": "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/4008c101-1227-4598-96e9-ccd68174333c-b5c0050a-bd08-4cfe-8085-6b7168445b1c-JUST GO 1.jpg",
+                                                "status": 1,
+                                            },
+                                        ]
+
+                                message: "Successfully"
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

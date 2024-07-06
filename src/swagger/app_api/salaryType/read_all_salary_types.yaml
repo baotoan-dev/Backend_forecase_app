@@ -1,0 +1,29 @@
+paths:
+    /api/v1/salary-types:
+        get:
+            summary: Read all salary types
+            tags:
+                - Site
+                - Post
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        { id: 1, value: "Giờ" },
+                                        { id: 2, value: "Ngày" },
+                                    ]
+                                message: Successfully
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

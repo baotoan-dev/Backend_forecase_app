@@ -1,0 +1,181 @@
+paths:
+  /api/v2/search:
+    get:
+      summary: Search by query v2
+      description: Search by query v2 (add expired_at time in response)
+      operationId: searchByQueryV2
+      security:
+        - bearerAuth: []
+      tags:
+        - Search
+      parameters:
+        - name: q
+          in: query
+          description: Query
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page
+          required: false
+          schema:
+            type: integer
+        - name: district_ids
+          in: query
+          description: District ids
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          example: ["001", "002"]
+        - name: category_ids
+          in: query
+          description: Category ids
+          required: false
+          schema:
+            type: array
+            items:
+              type: number
+        - name: salary_min
+          in: query
+          description: Salary min
+          required: false
+          schema:
+            type: number
+            format: float
+        - name: salary_max
+          in: query
+          description: Salary max
+          required: false
+          schema:
+            type: number
+            format: float
+        - name: salary_type
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          description: Salary type (1 - Hourly, 2 - Daily, 3 - Weekly, 4 - Monthly, 5 - Job)
+        - name: money_type
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 2
+          description: Money type (1 - VND, 2 - USD)
+        - name: is_working_weekend
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          description: Is working weekends (0 - No, 1 - Yes)
+        - name: is_remotely
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          description: Is remotely (0 - No, 1 - Yes)
+        - name: start_date
+          in: query
+          description: Start date
+          required: false
+          schema:
+            type: integer
+        - name: end_date
+          in: query
+          description: End date
+          required: false
+          schema:
+            type: integer
+            # format: time
+        - name: jobTypeId
+          in: query
+          description: Job type
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          example: [1, 2]
+        - name: only_company
+          in: query
+          description: Only company
+          required: false
+          schema:
+            type: integer
+            enum:
+              - 0
+              - 1
+          example: 1
+        - name: expried_sort
+          in: query
+          required: false
+          schema:
+            type: string
+          description: DESC (desc) or ASC (asc)
+        - name: salary_sort
+          in: query
+          required: false
+          schema:
+            type: string
+          description: DESC (desc) or ASC (asc)
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            type: string
+          description: DESC (desc) or ASC (asc)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

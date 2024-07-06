@@ -1,0 +1,48 @@
+paths:
+    /api/v1/chats/users:
+        get:
+            summary: Get users chatted
+            tags:
+                - Chat
+            security:
+                - bearerAuth: []
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            "user_id": "251ac081-001c-406d-a963-599ac871d0aa",
+                                            "name": "PCT",
+                                            "avatar": "https://thanh-avatar",
+                                            "is_sender": false,
+                                            "message": "~!!!!!",
+                                            "type": "text",
+                                            "status": 0,
+                                            "post_id": 242,
+                                            "post_title": "Crack win",
+                                            "created_at": 1675837375680,
+                                        },
+                                    ]
+                                message: "Successfully"
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            example:
+                                code: 401
+                                success: false
+                                message: Unauthorized
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

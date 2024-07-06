@@ -13,6 +13,7 @@ import createProfileWithAccountIdService from "../../services/profile/service.pr
 import readAccountByFacebookIdService from "../../services/account/service.account.readByFacebookId";
 import createAccountWithFacebookIdService from "../../services/account/service.account.createWithFacebookId";
 import updateIsActiveWithFacebookIdService from "../../services/account/service.account.updateIsActivceWithFacebook";
+import redisClient from "../../configs/redis";
 
 const signInWithFacebook = async (
     req: Request,
@@ -72,6 +73,12 @@ const signInWithFacebook = async (
         // TRY READ ACCOUNT BY FACEBOOK ID
         let account = await readAccountByFacebookIdService(id);
 
+        const idRedis = await redisClient.get(`disable:${account.id}`);
+
+        if (idRedis === account.id) {
+            return next(createError(401, "This account has been disabled"));
+        }
+
         let check = false;
         // IF ACCOUNT IS NOT EXIST, CREATE NEW ACCOUNT
         if (!account) {
@@ -89,7 +96,7 @@ const signInWithFacebook = async (
 
             // CREATE PROFILE
             const isCreateProfileSuccess =
-                await createProfileWithAccountIdService(accountId, null, userName);
+                await createProfileWithAccountIdService(accountId, email, null, userName);
             if (!isCreateProfileSuccess) {
                 return next(createError(500));
             }

@@ -1,0 +1,52 @@
+paths:
+  /api/v1/disable:
+    # email
+    post:
+      summary: Disable
+      description: Disable
+      operationId: disable
+      tags:
+        - Site
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      is_force_update:
+                        type: boolean
+                  code:
+                    type: integer
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+   

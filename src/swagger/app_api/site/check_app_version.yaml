@@ -1,0 +1,56 @@
+paths:
+  /api/v1/app-version:
+    get:
+      summary: Check app version
+      description: Check app version
+      operationId: checkAppVersion
+      tags:
+        - Site
+      parameters:
+        - name: platform
+          in: query
+          description: Platform
+          required: true
+          schema:
+            type: string
+            enum:
+              - ios
+              - android
+        - name: version
+          in: query
+          description: Version
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      is_force_update:
+                        type: boolean
+                  code:
+                    type: integer
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  success:
+                    type: boolean
+                  message:
+                    type: string

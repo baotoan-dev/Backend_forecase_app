@@ -1,0 +1,46 @@
+paths:
+    /api/v1/chats/seen-status:
+        put:
+            summary: Update seen status
+            tags:
+                - Chat
+            security:
+                - bearerAuth: []
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                chatIds:
+                                    type: array
+                            required:
+                                - chatIds
+                        example:
+                            chatIds: [65, 68]
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: "Successfully"
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            example:
+                                code: 401
+                                success: false
+                                message: Unauthorized
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

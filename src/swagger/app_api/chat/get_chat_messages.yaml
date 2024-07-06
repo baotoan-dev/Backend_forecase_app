@@ -1,0 +1,77 @@
+paths:
+    /api/v1/chats/messages:
+        get:
+            summary: Get chat messages
+            tags:
+                - Chat
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: query
+                  name: uid
+                  required: true
+                  schema:
+                      type: string
+                  description: id of user was clicked
+                - in: query
+                  name: pid
+                  required: true
+                  schema:
+                      type: number
+                  description: post id
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            "id": 69,
+                                            "type": "text",
+                                            "message": "???",
+                                            "status": 0,
+                                            "created_at": 1675837375679,
+                                            "is_sender": false,
+                                            "images": null,
+                                        },
+                                        {
+                                            "id": 72,
+                                            "type": "image",
+                                            "message": null,
+                                            "status": 0,
+                                            "created_at": 1675837375678,
+                                            "is_sender": false,
+                                            "images":
+                                                [
+                                                    {
+                                                        "id": 10,
+                                                        "image": "image 1",
+                                                    },
+                                                    {
+                                                        "id": 11,
+                                                        "image": "image 2",
+                                                    },
+                                                ],
+                                        },
+                                    ]
+                                message: "Successfully"
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            example:
+                                code: 401
+                                success: false
+                                message: Unauthorized
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

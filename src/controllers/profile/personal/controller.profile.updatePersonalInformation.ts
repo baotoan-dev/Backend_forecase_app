@@ -24,23 +24,43 @@ const updatePersonalInformationController = async (
         // GET DATA
         const bodyData = req.body;
         const name = bodyData.name ? bodyData.name.toString().trim() : null;
-        const phone = bodyData.phone ? bodyData.phone.toString().trim() : null;
+        const birthday = +bodyData.birthday;
+        const gender = +bodyData.gender;
+        const address = bodyData.address ? bodyData.address.toString().trim() : null;
+        const introduction = bodyData.introduction
+            ? bodyData.introduction.toString().trim()
+            : null;
 
+        const jobTypeId = +bodyData.jobTypeId ? +bodyData.jobTypeId : null
+
+        const jobTypeName = (bodyData.jobTypeName) ? bodyData.jobTypeName : (bodyData.jobTypeName === '') ? "" : null
         
         // VALIDATION
-        if (!name) {
-            return next(createError(400, "Name is required"));
-        }
-
-        if (!phone) {
-            return next(createError(400, "Phone is required"));
+        if (
+            !name ||
+            !Number.isInteger(birthday) ||
+            new Date(birthday).toString() === "Invalid Date" ||
+            !Number.isInteger(gender) ||
+            gender < 0 ||
+            gender > 1  ||
+            introduction && introduction.length > 500 ||
+            (jobTypeId && !Number.isInteger(jobTypeId)) ||
+            (jobTypeName && jobTypeName.length > 255)
+        ) {
+            logging.warning("Invalid body data");
+            return next(createError(400));
         }
 
         // UPDATE
         const isUpdateSuccess = await updatePersonalInformationService(
             id.toString(),
             name.toString().trim(),
-            phone.toString().trim()
+            birthday,
+            gender,
+            address ? address.toString().trim() : null,
+            introduction ? introduction.toString().trim() : null,
+            jobTypeId,
+            jobTypeName
         );
 
         if (!isUpdateSuccess) {

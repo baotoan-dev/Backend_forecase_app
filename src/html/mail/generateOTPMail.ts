@@ -31,7 +31,7 @@ const generateOTPMail = (otp: string, email: string) => {
             margin-top: 15px;
           "
         >
-          Quên mật khẩu
+          CHÀO MỪNG BẠN ĐẾN VỚI Jobs!
         </h1>
       </div>
       <div style="padding: 24px 0">

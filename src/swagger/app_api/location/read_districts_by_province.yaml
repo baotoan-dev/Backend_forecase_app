@@ -1,0 +1,33 @@
+paths:
+  /api/v1/locations/d?pid=:
+    get:
+      summary: Get districts by province
+      description: Get districts by province
+      tags:
+        - Location
+      parameters:
+        - in: query
+          name: pid
+          schema:
+            type: number
+          description: province id
+          required: true
+        - in: query
+          name: lang
+          schema:
+            type: string
+          description: language code vi | en | ko
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                code: 200
+                success: true
+                data:
+                  [
+                    { id: 1560, full_name: "Thành phố Trà Vinh" },
+                    { id: 1908, full_name: "Huyện Cầu Ngang" },
+                  ]
+                message: Successfully

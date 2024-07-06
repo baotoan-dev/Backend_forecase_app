@@ -1,0 +1,21 @@
+paths:
+    /api/v1/locations/p:
+        get:
+            summary: Get all provinces
+            description: Get all provinces
+            tags:
+                - Location
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        { id: 201, name: "Hà Nội" },
+                                        { id: 202, name: "Hồ Chí Minh" },
+                                    ]
+                                message: Successfully

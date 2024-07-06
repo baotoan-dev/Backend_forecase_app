@@ -1,7 +1,7 @@
 import { OAuth2Client } from "google-auth-library";
 import createError from "http-errors";
 import { Request, Response, NextFunction } from "express";
-
+import redisClient from "../../../configs/redis";
 import logging from "../../../utils/logging";
 import removeUnnecessaryDots from "../../../helpers/formatData/removeUnnecessaryDotsInEmail";
 

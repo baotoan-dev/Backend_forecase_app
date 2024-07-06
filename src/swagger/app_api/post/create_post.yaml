@@ -1,0 +1,155 @@
+paths:
+    /api/v1/posts:
+        post:
+            tags:
+                - Post
+            security:
+                - bearerAuth: []
+            summary: Create a post
+            description: Create a post
+            operationId: createPost
+            requestBody:
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                title:
+                                    type: string
+                                    example: "Tuyển nhân viên"
+                                companyName:
+                                    type: string
+                                    example: "Công ty TNHH ABC"
+                                wardId:
+                                    type: string
+                                    example: "00001"
+                                address:
+                                    type: string
+                                    example: "79 Quoc Huong"
+                                latitude:
+                                    type: number
+                                    example: 21.012345
+                                longitude:
+                                    type: number
+                                    example: 105.012345
+                                isDatePeriod:
+                                    type: number
+                                    example: 0
+                                    description: 0 - no, 1 - yes
+                                startDate:
+                                    type: number
+                                    example: 1611234567
+                                endDate:
+                                    type: number
+                                    example: 1611234567
+                                startTime:
+                                    type: number
+                                    example: 57600000
+                                endTime:
+                                    type: number
+                                    example: 57603000
+                                isWorkingWeekend:
+                                    type: number
+                                    description: 0 - no, 1 - yes
+                                isRemotely:
+                                    type: number
+                                    description: 0 - no, 1 - yes
+                                salaryMin:
+                                    type: number
+                                    example: 100000
+                                salaryMax:
+                                    type: number
+                                    example: 200000
+                                salaryType:
+                                    type: number
+                                    description: salary type id
+                                    example: 2
+                                moneyType:
+                                    type: number
+                                    description: 1 - VND, 2 - USD
+                                    enum:
+                                        - 1
+                                        - 2
+                                    example: 1
+                                jobTypeId:
+                                    type: number
+                                    example: 1
+                                description:
+                                    type: string
+                                    example: "Mô tả công việc"
+                                phoneNumber:
+                                    type: string
+                                    example: "0123456789"
+                                email:
+                                    type: string
+                                    example: "example@gmail.com"
+                                expiredDate:
+                                    type: number
+                                    example: 1611234567
+                                categoryIds:
+                                    type: array
+                                    items:
+                                        type: number
+                                    example: [453]
+                                images:
+                                    type: array
+                                    items:
+                                        type: string
+                                        description: Size < 2MB
+                                        format: binary
+                            required:
+                                - title
+                                - companyName
+                                - wardId
+                                - address
+                                - latitude
+                                - longitude
+                                - isDatePeriod
+                                - isWorkingWeekend
+                                - isRemotely
+                                - startTime
+                                - endTime
+                                - salaryMin
+                                - salaryMax
+                                - salaryType
+                                - salaryType
+                                - moneyType
+                                - description
+                                - categoryIds
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "401":
+                    description: Unauthorize
+                    content:
+                        application/json:
+                            example:
+                                code: 401
+                                success: false
+                                message: Unauthorize
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

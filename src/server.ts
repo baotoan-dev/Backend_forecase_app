@@ -8,6 +8,7 @@ import helmet from "helmet";
 import http from "http";
 
 import route from "./routes/route";
+import configSocket from "./configs/socket";
 import logging from "./utils/logging";
 import configJsonFirebase from "./keys/gig-app-82de6-firebase-adminsdk-vnayw-9fd65a122d.json";
 import "./configs/redis";
@@ -64,6 +65,11 @@ app.use(
         limit: "10mb",
     })
 );
+
+// Socket
+const io = configSocket(server);
+
+global.__io = io;
 
 // Init firebase app
 // firebaseAdmin.initializeApp({

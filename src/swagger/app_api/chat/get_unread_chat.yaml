@@ -1,0 +1,37 @@
+paths:
+    /api/v1/chats/unread:
+        get:
+            summary: Get quantity unread chat messages
+            tags:
+                - Chat
+            security:
+                - bearerAuth: []
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        quantity: 10,
+                                    ]
+                                message: "Successfully"
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            example:
+                                code: 401
+                                success: false
+                                message: Unauthorized
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

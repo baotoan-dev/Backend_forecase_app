@@ -1,0 +1,40 @@
+paths:
+    /api/v1/sign-out:
+        post:
+            summary: Sign out
+            description: Sign out
+            tags:
+                - Site
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref:
+                        example:
+                            refreshToken: "abc.xyz.tkl"
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

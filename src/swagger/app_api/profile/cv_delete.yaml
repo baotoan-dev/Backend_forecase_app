@@ -1,0 +1,45 @@
+paths:
+    /api/v1/profiles/cv:
+        delete:
+            summary: Delete CV of profile
+            description: Delete new CV of profile
+            tags:
+                - Profile
+            security:
+                - bearerAuth: []
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                message: Successfully
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+
+                "404":
+                    description: Not Found
+                    content:
+                        application/json:
+                            example:
+                                code: 404
+                                success: false
+                                message: Not Found
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

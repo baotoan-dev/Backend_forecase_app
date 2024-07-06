@@ -1,0 +1,81 @@
+paths:
+  /api/v1/notification/update:
+    put:
+      tags:
+        - Notification
+      summary: Update notification by id
+      description: Update notification by id
+      operationId: update_noti_by_id
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Notification object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notification_id:
+                  type: integer
+                  format: int64
+                is_read:
+                  type: integer
+                  format: int64
+                typeText:
+                  type: string
+                  description: Notification type
+                  example: 'keyword'
+                
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  code:
+                    type: integer
+                    format: int32
+                  success:
+                    type: boolean
+                    default: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

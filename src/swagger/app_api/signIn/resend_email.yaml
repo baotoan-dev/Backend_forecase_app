@@ -1,0 +1,56 @@
+paths:
+    /api/v1/sign-in/email/resend:
+        post:
+            summary: Resend email otp
+            description: Resend email otp
+            tags:
+                - Authentication
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/SignInWithEmailForm"
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignInResponse"
+                            example:
+                                code: 200
+                                success: true
+                                message: Resend email successfully
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignInResponse"
+                            example:
+                                code: 400
+                                success: false
+                                message: Invalid email
+
+                "404":
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignInResponse"
+                            example:
+                                code: 404
+                                success: false
+                                message: Incorrect email
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignInResponse"
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

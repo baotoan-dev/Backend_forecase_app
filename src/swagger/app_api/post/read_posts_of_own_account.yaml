@@ -1,0 +1,58 @@
+paths:
+    /api/v1/posts/own:
+        get:
+            summary: Read posts of current account session
+            description: Read posts of current account session
+            tags:
+                - Post
+            security:
+                - bearerAuth: []
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data:
+                                    [
+                                        {
+                                            id: 15,
+                                            status: 0,
+                                            account_id: "4d207f7c-d443-476b-af9a-b59da47560a9",
+                                            title: "Title",
+                                            company_name: "AIWorks",
+                                            is_date_period: 1,
+                                            start_date: 1668043800000,
+                                            end_date: 1668907800000,
+                                            start_time: 1668043800000,
+                                            end_time: 1668043800000,
+                                            salary: 5000,
+                                            salary_type: "Giờ",
+                                            created_at: 1669772817000,
+                                            image: "https://gig-app-upload.s3.ap-southeast-1.amazonaws.com/896aff4a-8c90-4891-8bce-43be9ec5606b-7edfc0ed-1899-44ee-85ec-a05fb3d07260-kali-logo-16x9-1.png",
+                                            province_id: 202,
+                                            province: "Hồ Chí Minh",
+                                            district_id: 1448,
+                                            district: "Quận 6",
+                                        },
+                                    ]
+                                message: "Successfully"
+
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

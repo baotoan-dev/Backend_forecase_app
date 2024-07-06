@@ -1,0 +1,60 @@
+paths:
+  /api/v1/notification/keyword:
+    post:
+      tags:
+        - Notification/Keyword
+      summary: Create a keyword for notification
+      description: Create a keyword for notification
+      operationId: key_word_create
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Notification keyword object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationKeywordDto'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationKeywordEntity'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

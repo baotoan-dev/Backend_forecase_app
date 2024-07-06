@@ -1,0 +1,76 @@
+paths:
+    /api/v1/sign-in/email/verify:
+        post:
+            summary: Verify OTP code for sign in with email
+            description: Verify email
+            tags:
+                - Authentication
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/VerifyEmailForm"
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/VerifyEmailResponse"
+                                example:
+                                    code: 200
+                                    success: true
+                                    message: Verify email successfully
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/VerifyEmailResponse"
+                            example:
+                                code: 400
+                                success: false
+                                message: Invalid email or otp
+                "403":
+                    description: Forbidden
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/VerifyEmailResponse"
+                            example:
+                                code: 403
+                                success: false
+                                message: Otp expired
+                "404":
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/VerifyEmailResponse"
+                            example:
+                                code: 404
+                                success: false
+                                message: Incorrect email
+
+                "409":
+                    description: Conflict
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/VerifyEmailResponse"
+                            example:
+                                code: 409
+                                success: false
+                                message: Incorrect otp
+
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/VerifyEmailResponse"
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

@@ -1,0 +1,45 @@
+paths:
+    /api/v1/reset-access-token:
+        post:
+            summary: Reset access token
+            description: Reset access token
+            tags:
+                - Site
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref:
+                        example:
+                            refreshToken: "abc.xyz.tkl"
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            example:
+                                code: 200
+                                success: true
+                                data: { accessToken: "abc.xyz.tkl" }
+                                message: Successfully
+                "400":
+                    description: Bad Request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignInResponse"
+                            example:
+                                code: 400
+                                success: false
+                                message: Bad Request
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignInResponse"
+                            example:
+                                code: 500
+                                success: false
+                                message: Internal Server Error

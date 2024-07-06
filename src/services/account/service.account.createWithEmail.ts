@@ -5,7 +5,6 @@ const createAccountWithEmailService = async (
     id: String,
     email: String,
     ggId: String = null,
-    passsword: String,
     role: number = 0
 ) => {
     try {
@@ -13,8 +12,8 @@ const createAccountWithEmailService = async (
         // create account with email and ggId
         logging.info("Create account with email service start: ", email);
         const res = await executeQuery(
-            "INSERT INTO accounts (id, email, gg_id, password, role) VALUES (?, ?, ?, ?, ?)",
-            [id, email, ggId, passsword, role]
+            "INSERT INTO accounts (id, email, gg_id, role) VALUES (?, ?, ?, ?)",
+            [id, email, ggId, role]
         );
         
         return res.affectedRows === 1; // return true if create account success

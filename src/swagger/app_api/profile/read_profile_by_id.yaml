@@ -1,5 +1,5 @@
 paths:
-    /api/v1/profiles:
+    /api/v1/profiles/s:
         get:
             summary: Get profile by id
             description: Get profile by id
