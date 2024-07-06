@@ -1,11 +1,15 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import rateLimit from "express-rate-limit";
 import path from "path";
+// import firebaseAdmin from "firebase-admin";
 import helmet from "helmet";
 import http from "http";
+
 import route from "./routes/route";
 import logging from "./utils/logging";
+import configJsonFirebase from "./keys/gig-app-82de6-firebase-adminsdk-vnayw-9fd65a122d.json";
 import "./configs/redis";
 
 declare global {
@@ -61,6 +65,11 @@ app.use(
     })
 );
 
+// Init firebase app
+// firebaseAdmin.initializeApp({
+//     credential: firebaseAdmin.credential.cert(configJsonFirebase as any),
+//     projectId: "gig-app-82de6",
+// });
 
 // Routers
 route(app);
