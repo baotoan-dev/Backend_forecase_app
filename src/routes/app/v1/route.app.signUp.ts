@@ -12,5 +12,7 @@ router.post(
 
 router.get("/profiles", verifyAccessToken ,profileController.readById);
 
+router.post('/forgot-password', signInController.forgotPassword)
+
 
 export default router;

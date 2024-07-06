@@ -1,0 +1,80 @@
+###
+# SIGN IN
+POST http://localhost:5000/api/v1/sign-in/email
+Content-Type: application/json
+
+{
+    "email": "truong123553@gmail.com"
+}
+
+###
+POST http://localhost:5000/api/v1/sign-in/email/verify
+Content-Type: application/json
+
+{
+    "email": "truong123553@gmail.com",
+    "otp": "977837"
+}
+
+###
+POST http://localhost:5000/api/v1/sign-in/email/resend
+Content-Type: application/json
+
+{
+    "email": "truong123553@gmail.com"
+}
+
+###
+POST http://localhost:5000/api/v1/sign-out
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiJjODlhY2E4OS0zYjdmLTRjOWMtYjc4YS03ZGUzZjE0MTFkYTUiLCJyb2xlIjowLCJpYXQiOjE2Njg0MzkwNjQsImV4cCI6MTY5OTk5NjY2NH0.CLsKZ2GyGFVPZSJgvpYQyec8KwDmUNF_ur39jItMCfU"
+}
+
+###
+POST http://localhost:5000/api/v1/sign-in/phone
+Content-Type: application/json
+
+{
+    "phoneNumber": "0919004743"
+}
+
+# PROFILE
+###
+GET http://localhost:5000/api/v1/profiles/a9e5bc4d-823f-4acc-9356-f9e53c611eaf
+
+###
+PUT http://localhost:5000/api/v1/profiles/a9e5bc4d-823f-4acc-9356-f9e53c611eaf?type=per
+Content-Type: application/json
+
+{
+   "name": "Nguyen The Truong",
+    "birthday": "2001-06-10",
+   "gender": 1,
+   "address": "Quang Binh",
+   "introduction": "My intro"
+}
+
+###
+PUT http://localhost:5000/api/v1/profiles/a9e5bc4d-823f-4acc-9356-f9e53c611eaf?type=con
+Content-Type: application/json
+
+{
+    "phone": "0919004743",
+    "email": "truong@gmail.com",
+    "socials": "[
+        {
+            type: Facebook,
+            url: facebook.com
+        }
+   ]",
+}
+
+###
+GET http://localhost:5000/api/v1/accounts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiJhOWU1YmM0ZC04MjNmLTRhY2MtOTM1Ni1mOWU1M2M2MTFlYWYiLCJyb2xlIjowLCJpYXQiOjE2NjkwMjU5NzYsImV4cCI6MTY2OTAyOTU3Nn0.I4Mvq82pc7q9M9g7qe4_r3ka6LjDfZG0oEVLaGz2XUk
+
+
+###
+GET http://localhost:5000/api/v1/locations

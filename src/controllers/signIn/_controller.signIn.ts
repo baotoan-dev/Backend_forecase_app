@@ -5,6 +5,7 @@ import signInWithFacebook from "./controller.signIn.facebook";
 import candidateSignInController from "./controller.signIn.candidate";
 import modifyPasswordRecruiterController from "./controller.signIn.modifyPasswordRecruiter";
 import signUpController from "./controller.signUp";
+import forgotPasswordController from "./controller.signIn.forgotPassword";
 
 const signInController = {
     signInWithFacebook: signInWithFacebook,
@@ -14,6 +15,7 @@ const signInController = {
     candidateSignIn: candidateSignInController,
     modifyPassword: modifyPasswordRecruiterController,
     signUp: signUpController,
+    forgotPassword: forgotPasswordController,
 };
 
 export default signInController;
