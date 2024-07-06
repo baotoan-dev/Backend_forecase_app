@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.post(
     "/sign-up",
-    verifyAccessToken,
     signInController.signUp,
 )
 

@@ -11,7 +11,7 @@ const createProfileWithAccountIdService = async (accountId: string, phone: strin
             accountId,
             phone,
             name,
-            null,
+            "",
         ]);
         // console.log(res);
         return res.affectedRows === 1;
