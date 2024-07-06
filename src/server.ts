@@ -1,11 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import rateLimit from "express-rate-limit";
 import path from "path";
 import helmet from "helmet";
 import http from "http";
-
 import route from "./routes/route";
 import logging from "./utils/logging";
 import "./configs/redis";
